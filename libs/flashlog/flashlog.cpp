@@ -135,4 +135,16 @@ void setSerialMirroring(bool enable) {
 #endif
 }
 
+/**
+ * Get the nth row stored on the microbit
+*/
+//% help=flashlog/get-row
+//% parts="flashlog"
+//% blockGap=8
+//% group="micro:bit (V2)"
+String getRow(int n) {
+#if MICROBIT_CODAL
+    return "Testing :)";
+#endif
+}
 }

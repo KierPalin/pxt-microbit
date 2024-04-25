@@ -286,4 +286,11 @@ namespace datalogger {
         init();
         flashlog.setSerialMirroring(on);
     }
+
+    //% block="get nth row of logged data"
+    //% blockId=dataloggergetrow
+    //% weight=25 help=datalogger/get-row
+    export function getRow(n: number): string {
+        return flashlog.getRow(0);
+    }
 }
