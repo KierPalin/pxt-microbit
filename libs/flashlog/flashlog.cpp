@@ -144,7 +144,7 @@ void setSerialMirroring(bool enable) {
 //% group="micro:bit (V2)"
 String getRow(int n) {
 #if MICROBIT_CODAL
-    return "Testing :)";
+    return PSTR("Testing :)");
 #endif
 }
 }
