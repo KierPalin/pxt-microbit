@@ -145,7 +145,6 @@ void setSerialMirroring(bool enable) {
 String getRow(int n) {
 #if MICROBIT_CODAL
     return PSTR(uBit.log.getRow(n));
-    // return PSTR("Testing :)");
 #endif
 }
 }
