@@ -75,6 +75,15 @@ declare namespace flashlog {
     //% blockGap=8
     //% group="micro:bit (V2)" shim=flashlog::setSerialMirroring
     function setSerialMirroring(enable: boolean): void;
+
+    /**
+     * Get the nth row stored on the microbit
+     */
+    //% help=flashlog/get-row
+    //% parts="flashlog"
+    //% blockGap=8
+    //% group="micro:bit (V2)" shim=flashlog::getRow
+    function getRow(n: int32): string;
 }
 
 // Auto-generated. Do not edit. Really.
