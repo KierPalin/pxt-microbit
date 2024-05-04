@@ -136,15 +136,16 @@ void setSerialMirroring(bool enable) {
 }
 
 /**
- * Get the nth row stored on the microbit
-*/
-//% help=flashlog/get-row
+ * Get all the logged data as a String.
+ * Each row seperated by a new line, each column by a comma
+ */
+//% help=flashlog/get-data
 //% parts="flashlog"
 //% blockGap=8
 //% group="micro:bit (V2)"
-String getRow(int n) {
+String getData() {
 #if MICROBIT_CODAL
-    return PSTR(uBit.log.getRow(n));
+    return PSTR(uBit.log.getData());
 #endif
 }
 }
