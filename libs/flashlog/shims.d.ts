@@ -77,13 +77,14 @@ declare namespace flashlog {
     function setSerialMirroring(enable: boolean): void;
 
     /**
-     * Get the nth row stored on the microbit
+     * Get all the logged data as a String.
+     * Each element is seperated by a _
      */
-    //% help=flashlog/get-row
+    //% help=flashlog/get-data
     //% parts="flashlog"
     //% blockGap=8
-    //% group="micro:bit (V2)" shim=flashlog::getRow
-    function getRow(n: int32): string;
+    //% group="micro:bit (V2)" shim=flashlog::getData
+    function getData(): string;
 }
 
 // Auto-generated. Do not edit. Really.

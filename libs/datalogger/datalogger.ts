@@ -287,6 +287,13 @@ namespace datalogger {
         flashlog.setSerialMirroring(on);
     }
 
+    // //% block="Get all the logged data as a String"
+    // //% blockId=dataloggergetdata
+    // //% weight=25 help=datalogger/get-data
+    // export function getNRows(n: number): string {
+    //     return flashlog.getNRows();
+    // }
+
     //% block="Get all the logged data as a String"
     //% blockId=dataloggergetdata
     //% weight=25 help=datalogger/get-data
