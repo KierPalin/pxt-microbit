@@ -137,7 +137,10 @@ void setSerialMirroring(bool enable) {
 
 
 /**
- * Get the number of rows currently used by the datalogger
+* Number of rows currently used by the datalogger, start counting at fromRowIndex
+* Treats the header as the first row
+* @param fromRowIndex 0-based index of start
+* @returns header + rows
 */
 //% help=flashlog/get-number-of-rows
 //% parts="flashlog"
@@ -150,10 +153,12 @@ int getNumberOfRows(int fromRowIndex) {
 }
 
 /**
- * Get n rows worth of logged data as a single string
- * Start from the specified row as index
- * Each element is seperated by a _
- */
+* Get all rows seperated by a newline & each column seperated by a comma.
+* Starting at the 0-based index fromRowIndex & counting inclusively until nRows.
+* @param fromRowIndex 0-based index of start
+* @param nRows inclusive count from fromRowIndex
+* @returns String where newlines denote rows & commas denote columns
+*/
 //% help=flashlog/get-rows
 //% parts="flashlog"
 //% blockGap=8
