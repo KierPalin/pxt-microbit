@@ -287,18 +287,18 @@ namespace datalogger {
         flashlog.setSerialMirroring(on);
     }
 
-    // //% block="Get all the logged data as a String"
-    // //% blockId=dataloggergetdata
-    // //% weight=25 help=datalogger/get-data
-    // export function getNRows(n: number): string {
-    //     return flashlog.getNRows();
-    // }
+    //% block="Get the number of rows currently used by the datalogger"
+    //% blockId=dataloggergetnumberofrows
+    //% weight=25 help=datalogger/get-number-of-rows
+    export function getNumberOfRows(fromRowIndex: number): number {
+        return flashlog.getNumberOfRows(fromRowIndex);
+    }
 
-    //% block="Get all the logged data as a String"
-    //% blockId=dataloggergetdata
-    //% weight=25 help=datalogger/get-data
-    export function getData(): string {
-        return flashlog.getData();
+    //% block="Get the specified number of rows, from the starting row."
+    //% blockId=dataloggergetrows
+    //% weight=25 help=datalogger/get-rows
+    export function getRows(fromRowIndex: number, nRows: number): string {
+        return flashlog.getRows(fromRowIndex, nRows);
     }
 }
  

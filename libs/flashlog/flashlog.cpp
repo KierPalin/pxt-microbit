@@ -135,17 +135,32 @@ void setSerialMirroring(bool enable) {
 #endif
 }
 
+
 /**
- * Get all the logged data as a String.
- * Each row seperated by a new line, each column by a comma
- */
-//% help=flashlog/get-data
+ * Get the number of rows currently used by the datalogger
+*/
+//% help=flashlog/get-number-of-rows
 //% parts="flashlog"
 //% blockGap=8
 //% group="micro:bit (V2)"
-String getData() {
+int getNumberOfRows(int fromRowIndex) {
 #if MICROBIT_CODAL
-    return PSTR(uBit.log.getData());
+    return uBit.log.getNumberOfRows(fromRowIndex);
+#endif
+}
+
+/**
+ * Get n rows worth of logged data as a single string
+ * Start from the specified row as index
+ * Each element is seperated by a _
+ */
+//% help=flashlog/get-rows
+//% parts="flashlog"
+//% blockGap=8
+//% group="micro:bit (V2)"
+String getRows(int fromRowIndex, int nRows) {
+#if MICROBIT_CODAL
+    return PSTR(uBit.log.getRows(fromRowIndex, nRows));
 #endif
 }
 }
