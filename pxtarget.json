@@ -196,7 +196,7 @@
                 "codalTarget": {
                     "name": "codal-microbit-v2",
                     "url": "https://github.com/KierPalin/codal-microbit-v2",
-                    "branch": "master",
+                    "branch": "feature/datalogger-get-rows",
                     "type": "git"
                 },
                 "codalBinary": "MICROBIT",
