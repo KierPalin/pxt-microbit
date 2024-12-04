@@ -25,7 +25,7 @@ class WDisplay {
     ST7735 *lcd;
     JDDisplay *smart;
 
-    uint32_t currPalette[16];
+    uint32_t currPalette[32];
     bool present;
     bool newPalette;
     bool inUpdate;

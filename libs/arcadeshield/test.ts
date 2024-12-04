@@ -14,7 +14,7 @@ const screen = bitmaps.create(
 input.onButtonPressed(Button.A, () => {
     screen.fill(2)
     screen.drawLine(0,0,100,100,0)
-    __screenhelpers.updateScreen(screen)
+    __screenhelpers.updateScreen(screen) 
 })
 
 input.onButtonPressed(Button.B, () => {
