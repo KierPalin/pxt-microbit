@@ -16,7 +16,9 @@
         "libs/settings",
         "libs/flashlog",
         "libs/datalogger",
+        "libs/bitmap",
         "libs/fonts",
+        "libs/arcadeshield",
         "libs/color",
         "libs/audio-recording"
     ],
@@ -197,7 +199,7 @@
                 "codalTarget": {
                     "name": "codal-microbit-v2",
                     "url": "https://github.com/lancaster-university/codal-microbit-v2",
-                    "branch": "v0.2.67",
+                    "branch": "v0.2.69",
                     "type": "git"
                 },
                 "codalBinary": "MICROBIT",
@@ -260,6 +262,7 @@
                 "permanent": true
             }
         },
+        "testSimulatorExtensions": {},
         "boardDefinition": {
             "visual": "microbit",
             "gpioPinBlocks": [
@@ -581,6 +584,7 @@
 
             "dragFileImage": "/static/download/transfer.png",
             "connectDeviceImage": "/static/download/connect-microbit.gif",
+            "disconnectDeviceImage": "/static/download/full-reset.gif",
             "selectDeviceImage": "/static/download/selecting-microbit.gif",
             "connectionSuccessImage": "/static/download/successfully-paired.png",
             "incompatibleHardwareImage": "/static/download/incompatible.png",
@@ -624,7 +628,8 @@
         "teachertool=1": {
             "appTheme": {
                 "hideMenuBar": true,
-                "workspaceSearch": true
+                "workspaceSearch": true,
+                "noReloadOnUpdate": true
             }
         }
     },

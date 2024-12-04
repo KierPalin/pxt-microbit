@@ -521,6 +521,10 @@ Many extensions are available to work with interface kits, add-on hardware, or o
 
 ```codecard
 [{
+  "name": "Kitronik Craft & Code",
+  "url":"/pkg/KitronikLtd/pxt-kitronik-Craft-and-Code",
+  "cardType": "package"
+}, {
   "name": "Lectrify Brick:Bit",
   "url":"/pkg/softsmyth/lectrify-b4k",
   "cardType": "package"
@@ -598,7 +602,7 @@ Many extensions are available to work with interface kits, add-on hardware, or o
   "cardType": "package"
 }, {
   "name": "MATRIX Micro",
-  "url":"/pkg/pxt-MatrixMicro",
+  "url":"/pkg/matrix-robotics/pxt-MatrixMicro",
   "cardType": "package"
 }, {
   "name": "PTKidsBIT",
@@ -941,6 +945,10 @@ Many extensions are available to work with interface kits, add-on hardware, or o
 
 ```codecard
 [{
+  "name": "Sonification",
+  "url":"/pkg/davidnsousa/sonification",
+  "cardType": "package"
+}, {
   "name": "Kitronik Klef Piano",
   "url":"/pkg/KitronikLtd/pxt-kitronik-klef-piano",
   "cardType": "package"
@@ -972,6 +980,10 @@ Many extensions are available to work with interface kits, add-on hardware, or o
 ## Utilities
 ```codecard
 [{
+  "name": "Hebrew",
+  "url": "/pkg/shahart/heb-microbit",
+  "cardType": "package"
+}, {
   "name": "Faces",
   "url": "/pkg/GrandpaBond/pxt-faces",
   "cardType": "package"

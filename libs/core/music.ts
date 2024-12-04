@@ -323,7 +323,7 @@ namespace music {
      * Gets the melody array of a built-in melody.
      * @param name the note name, eg: Note.C
      */
-    //% weight=50 help=music/builtin-melody
+    //% weight=50 help=music/built-in-melody
     //% blockId=device_builtin_melody block="%melody"
     //% blockHidden=true
     //% group="Melody Advanced"
@@ -336,7 +336,7 @@ namespace music {
      * Gets the melody array of a built-in melody.
      * @param melody the melody name
      */
-    //% weight=60 help=music/builtin-melody
+    //% weight=60 help=music/built-in-playable-melody
     //% blockId=device_builtin_melody_playable block="melody $melody"
     //% toolboxParent=music_playable_play_default_bkg
     //% toolboxParentArgument=toPlay
@@ -670,7 +670,7 @@ namespace music {
                 current = notes.charAt(note);
                 if (current === "#") current = notes.charAt(note - 1) + current
 
-                octave = Math.idiv((melody[i] - 23), 12)
+                octave = Math.idiv((melody[i] - 24), 12)
             }
 
             const duration = melody[i + 1];

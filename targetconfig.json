@@ -31,7 +31,6 @@
             "microsoft/pxt-apa102": {},
             "microsoft/pxt-radio-firefly": {},
             "microsoft/pxt-ml": {},
-            "microsoft/pxt-arcadeshield": { "tags": [ "Lights and Display" ] },
             "kitronikltd/pxt-kitronik-servo-lite": {
                 "tags": [ "Robotics" ],
                 "preferred": true
@@ -452,7 +451,7 @@
             "bsiever/pxt-sen55": { "tags": [ "Science" ] },
             "climate-action-kits/pxt-fwd-edu": {},
             "elecfreaks/pxt-cutebot-pro": { "tags": [ "Robotics" ], "preferred": true },
-            "microbit-foundation/makecode-tutorials": {},
+            "microbit-foundation/makecode-tutorials": { "tutorial" : true },
             "grandpabond/pxt-meter": { "tags": [ "Software" ] },
             "microsoft/microbit-robot": { "tags": [ "Robotics" ] },
             "4tronix/mars-rover": { "tags": [ "Robotics" ] },
@@ -464,7 +463,29 @@
             "roborisen/gcube": { "tags": [ "Robotics" ] },
             "kittenbot/pxt-tabbyrobot": { "tags": [ "Robotics" ] },
             "pythom1234/pxt-oled": { "tags": [ "Lights and Display" ] },
-            "softsmyth/lectrify-b4k": { "tags": [ "Robotics" ] }
+            "softsmyth/lectrify-b4k": { "tags": [ "Robotics" ] },
+            "davidnsousa/sonification": { "tags": [ "Software" ] },
+            "shahart/heb-microbit": { "tags": [ "Software" ] },
+            "kitronikltd/pxt-kitronik-craft-and-code": { "tags": [ "Robotics" ] },
+            "microsoft/pxt-simx-sample": {
+                "simx": {
+                    "sha": "7301f5900879b85127482d79bab48f03c25690a8",
+                    "devUrl": "http://localhost:5173"
+                }
+            },
+            "microbit-foundation/pxt-microbit-ml": { 
+                "simx": {
+                    "sha": "e349a2feaae9f84a24ebd56716209ef74e1758d2",
+                    "devUrl": "http://localhost:5173",
+                    "aspectRatio": 3.45
+                }
+            },
+            "microbit-apps/pxt-arcadeshield": {
+                "simx": {
+                    "sha": "5bac5ff5b80621b53b746e4bbe252e406b992bdb",
+                    "devUrl": "http://localhost:3000"
+                }
+            }
         },
         "approvedEditorExtensionUrls": [
             "https://microsoft.github.io/ml4f/",
@@ -524,10 +545,14 @@
             {
                 "title": "Checklists for Games",
                 "cardsUrl": "teachertool/carousels/checklists-for-games/cards.json"
+            },
+            {
+                "title": "Checklists for Tools",
+                "cardsUrl": "teachertool/carousels/checklists-for-tools/cards.json"
             }
         ]
     },
     "electronManifest": {
-        "latest": "v6.0.19"
+        "latest": "v7.0.49"
     }
 }
