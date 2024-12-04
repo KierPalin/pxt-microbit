@@ -18,7 +18,7 @@ void debuglog(const char *format, ...);
 
 #ifdef CODAL_CONFIG_H
 #define MICROBIT_CODAL 1
-#define GC_MAX_ALLOC_SIZE 11000
+#define GC_MAX_ALLOC_SIZE 22000 // Up from 11000
 #else
 #define MICROBIT_CODAL 0
 #define GC_MAX_ALLOC_SIZE 9000

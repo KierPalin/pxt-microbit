@@ -266,9 +266,11 @@ void setPalette(Buffer buf) {
     if (!display)
         return;
 
-    if (48 != buf->length)
+    if ((48 != buf->length) || (96 != buf->length))
         target_panic(130); // PANIC_SCREEN_ERROR
-    for (int i = 0; i < 16; ++i) {
+
+    const paletteLength = buf->length / 3;
+    for (int i = 0; i < paletteLength; ++i) {
         display->currPalette[i] =
             (buf->data[i * 3] << 16) | (buf->data[i * 3 + 1] << 8) | (buf->data[i * 3 + 2] << 0);
         display->currPalette[i] ^= display->palXOR;

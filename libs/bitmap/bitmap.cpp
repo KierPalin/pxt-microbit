@@ -2,11 +2,13 @@
 
 typedef RefImage *Bitmap_;
 
-#define IMAGE_BITS 4
+#define IMAGE_BITS 8
 
 #if IMAGE_BITS == 1
 // OK
 #elif IMAGE_BITS == 4
+// OK
+#elif IMAGE_BITS == 8
 // OK
 #else
 #error "Invalid IMAGE_BITS"
