@@ -521,6 +521,18 @@ Many extensions are available to work with interface kits, add-on hardware, or o
 
 ```codecard
 [{
+  "name": "SIYEENOVE mCar",
+  "url":"/pkg/siyeenove/pxt_mcar",
+  "cardType": "package"
+}, {
+  "name": "Cytron SUMO:BIT",
+  "url":"/pkg/CytronTechnologies/pxt-sumobit",
+  "cardType": "package"
+}, {
+  "name": "PARALLAX cyber:bot",
+  "url":"/pkg/parallaxinc/cyberbot_makecode",
+  "cardType": "package"
+}, {
   "name": "Kitronik Craft & Code",
   "url":"/pkg/KitronikLtd/pxt-kitronik-Craft-and-Code",
   "cardType": "package"
@@ -980,6 +992,10 @@ Many extensions are available to work with interface kits, add-on hardware, or o
 ## Utilities
 ```codecard
 [{
+  "name": "States",
+  "url": "/pkg/hovavo/pxt-states",
+  "cardType": "package"
+}, {
   "name": "Hebrew",
   "url": "/pkg/shahart/heb-microbit",
   "cardType": "package"
