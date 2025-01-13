@@ -161,7 +161,6 @@ class WDisplay {
 
         uint32_t configId = (hc & 0xe0) >> 5;
 
-
         switch (configId) {
         case 1:
             *cfg1 = 0x0603; // ST7735
@@ -175,7 +174,7 @@ class WDisplay {
             *cfg0 |= 0x1000000; // inverted colors
             break;
         default:
-            target_panic(129);  // PANIC_SCREEN_ERROR
+            target_panic(129); // PANIC_SCREEN_ERROR
             break;
         }
 
@@ -269,7 +268,7 @@ void setPalette(Buffer buf) {
     if ((48 != buf->length) || (96 != buf->length))
         target_panic(130); // PANIC_SCREEN_ERROR
 
-    const paletteLength = buf->length / 3;
+    const int paletteLength = buf->length / 3;
     for (int i = 0; i < paletteLength; ++i) {
         display->currPalette[i] =
             (buf->data[i * 3] << 16) | (buf->data[i * 3 + 1] << 8) | (buf->data[i * 3 + 2] << 0);
@@ -318,7 +317,7 @@ void updateScreen(Bitmap_ img) {
     if (img) {
         if (img->bpp() != 4 || img->width() * mult != display->width ||
             img->height() * mult != display->displayHeight)
-            target_panic(131);  // PANIC_SCREEN_ERROR
+            target_panic(131); // PANIC_SCREEN_ERROR
 
         // DMESG("wait for done");
         display->waitForSendDone();
