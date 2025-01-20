@@ -261,20 +261,21 @@ void setScreenBrightness(int level) {
 
 //%
 void setPalette(Buffer buf) {
-    auto display = getWDisplay();
-    if (!display)
-        return;
+    target_panic(230); // PANIC_SCREEN_ERROR
+    // auto display = getWDisplay();
+    // if (!display)
+    //     return;
 
-    if ((48 != buf->length) || (96 != buf->length))
-        target_panic(130); // PANIC_SCREEN_ERROR
+    // if ((48 != buf->length) || (96 != buf->length))
+    //     target_panic(130); // PANIC_SCREEN_ERROR
 
-    const int paletteLength = buf->length / 3;
-    for (int i = 0; i < paletteLength; ++i) {
-        display->currPalette[i] =
-            (buf->data[i * 3] << 16) | (buf->data[i * 3 + 1] << 8) | (buf->data[i * 3 + 2] << 0);
-        display->currPalette[i] ^= display->palXOR;
-    }
-    display->newPalette = true;
+    // const int paletteLength = buf->length / 3;
+    // for (int i = 0; i < paletteLength; ++i) {
+    //     display->currPalette[i] =
+    //         (buf->data[i * 3] << 16) | (buf->data[i * 3 + 1] << 8) | (buf->data[i * 3 + 2] << 0);
+    //     display->currPalette[i] ^= display->palXOR;
+    // }
+    // display->newPalette = true;
 }
 
 //%

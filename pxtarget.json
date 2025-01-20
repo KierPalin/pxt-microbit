@@ -180,10 +180,9 @@
         "dockerImage": "pext/yotta:gcc5"
     },
     "multiVariants": [
-        "mbdal",
         "mbcodal"
     ],
-    "alwaysMultiVariant" : true,
+    "alwaysMultiVariant": true,
     "variants": {
         "mbdal": {
             "compile": {},
@@ -348,12 +347,10 @@
                 "bluetooth",
                 "thermometer",
                 "compass",
-
                 "builtinspeaker",
                 "microphone",
                 "logotouch",
                 "flashlog",
-
                 "v2"
             ],
             "pinStyles": {
@@ -573,16 +570,17 @@
         "immersiveReader": true,
         "tutorialCodeValidation": true,
         "downloadDialogTheme": {
-            "webUSBDeviceNames": ["BBC micro:bit CMSIS-DAP", "DAPLink CMSIS-DAP"],
+            "webUSBDeviceNames": [
+                "BBC micro:bit CMSIS-DAP",
+                "DAPLink CMSIS-DAP"
+            ],
             "minimumFirmwareVersion": "0249",
             "deviceIcon": "xicon microbit",
             "deviceSuccessIcon": "xicon microbit-check",
-
-            "downloadMenuHelpURL" : "/device/usb",
-            "downloadHelpURL" : "/device/usb",
+            "downloadMenuHelpURL": "/device/usb",
+            "downloadHelpURL": "/device/usb",
             "troubleshootWebUSBHelpURL": "/device/usb/webusb/troubleshoot",
             "incompatibleHardwareHelpURL": "/device/v2",
-
             "dragFileImage": "/static/download/transfer.png",
             "connectDeviceImage": "/static/download/connect-microbit.gif",
             "disconnectDeviceImage": "/static/download/full-reset.gif",
