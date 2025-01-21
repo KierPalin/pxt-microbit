@@ -471,6 +471,7 @@
             "hovavo/pxt-states": { "tags": [ "Software" ] },
             "parallaxinc/cyberbot_makecode": { "tags": [ "Robotics" ] },
             "siyeenove/pxt_mcar": { "tags": [ "Robotics" ] },
+            "elecfreaks/xgo-rider": { "tags": [ "Robotics" ] },
             "microsoft/pxt-simx-sample": {
                 "simx": {
                     "sha": "7301f5900879b85127482d79bab48f03c25690a8",
@@ -484,9 +485,9 @@
                     "aspectRatio": 3.45
                 }
             },
-            "microbit-apps/pxt-arcadeshield": {
+            "microbit-apps/display-shield": {
                 "simx": {
-                    "sha": "5bac5ff5b80621b53b746e4bbe252e406b992bdb",
+                    "sha": "0825d56f78528c57af100a96abdfe2162f59945a",
                     "devUrl": "http://localhost:3000"
                 }
             }
