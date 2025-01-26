@@ -2,11 +2,13 @@
 
 typedef RefImage *Bitmap_;
 
-#define IMAGE_BITS 4
+#define IMAGE_BITS 8
 
 #if IMAGE_BITS == 1
 // OK
 #elif IMAGE_BITS == 4
+// OK
+#elif IMAGE_BITS == 8
 // OK
 #else
 #error "Invalid IMAGE_BITS"
@@ -719,7 +721,7 @@ bool drawBitmapCore(Bitmap_ img, Bitmap_ from, int x, int y, int color) {
     B(20);                                                                                         \
     A(24);                                                                                         \
     B(28)
-//#define ORDER(A,B) for (int k = 0; k < 32; k += 8) { A(k); B(4+k); }
+// #define ORDER(A,B) for (int k = 0; k < 32; k += 8) { A(k); B(4+k); }
 #define LOOP(A, B, xbot)                                                                           \
     while (cnt--) {                                                                                \
         auto v = *fdata++;                                                                         \
@@ -1118,9 +1120,11 @@ bool blit(Bitmap_ dst, Bitmap_ src, pxt::RefCollection *args) {
     if (!check)
         dst->makeWritable();
 
-    for (int yDstCur = yDstStart, ySrcCur = ySrcStart; yDstCur < yDstEnd && ySrcCur < ySrcEnd; ++yDstCur, ySrcCur += ySrcStep) {
+    for (int yDstCur = yDstStart, ySrcCur = ySrcStart; yDstCur < yDstEnd && ySrcCur < ySrcEnd;
+         ++yDstCur, ySrcCur += ySrcStep) {
         int ySrcCurI = ySrcCur >> 16;
-        for (int xDstCur = xDstStart, xSrcCur = xSrcStart; xDstCur < xDstEnd && xSrcCur < xSrcEnd; ++xDstCur, xSrcCur += xSrcStep) {
+        for (int xDstCur = xDstStart, xSrcCur = xSrcStart; xDstCur < xDstEnd && xSrcCur < xSrcEnd;
+             ++xDstCur, xSrcCur += xSrcStep) {
             int xSrcCurI = xSrcCur >> 16;
             int cSrc = getCore(src, xSrcCurI, ySrcCurI);
             if (check && cSrc) {
@@ -1172,20 +1176,19 @@ void _fillCircle(Bitmap_ img, int cxy, int r, int c) {
     fillCircle(img, XX(cxy), YY(cxy), r, c);
 }
 
-typedef struct
-{
+typedef struct {
     int x, y;
     int x0, y0;
     int x1, y1;
-    int W,H;
+    int W, H;
     int dx, dy;
     int yi, xi;
     int D;
     int nextFuncIndex;
-} LineGenState; // For keeping track of the state when generating Y values for a line, even when moving to the next X.
+} LineGenState; // For keeping track of the state when generating Y values for a line, even when
+                // moving to the next X.
 
-typedef struct
-{
+typedef struct {
     int min;
     int max;
 } ValueRange;
@@ -1193,8 +1196,10 @@ typedef struct
 void nextYRange_Low(int x, LineGenState *line, ValueRange *yRange) {
     while (line->x == x && line->x <= line->x1 && line->x < line->W) {
         if (0 <= line->x) {
-            if (line->y < yRange->min) yRange->min = line->y;
-            if (line->y > yRange->max) yRange->max = line->y;
+            if (line->y < yRange->min)
+                yRange->min = line->y;
+            if (line->y > yRange->max)
+                yRange->max = line->y;
         }
         if (line->D > 0) {
             line->y += line->yi;
@@ -1208,8 +1213,10 @@ void nextYRange_Low(int x, LineGenState *line, ValueRange *yRange) {
 void nextYRange_HighUp(int x, LineGenState *line, ValueRange *yRange) {
     while (line->x == x && line->y >= line->y1 && line->x < line->W) {
         if (0 <= line->x) {
-            if (line->y < yRange->min) yRange->min = line->y;
-            if (line->y > yRange->max) yRange->max = line->y;
+            if (line->y < yRange->min)
+                yRange->min = line->y;
+            if (line->y > yRange->max)
+                yRange->max = line->y;
         }
         if (line->D > 0) {
             line->x += line->xi;
@@ -1219,12 +1226,16 @@ void nextYRange_HighUp(int x, LineGenState *line, ValueRange *yRange) {
         --line->y;
     }
 }
-// This function is similar to the sub-function drawLineHigh for drawLine. However, it yields back after calculating all Y values of a given X. When the function is called again, it continues from the state where it yielded back previously.
+// This function is similar to the sub-function drawLineHigh for drawLine. However, it yields back
+// after calculating all Y values of a given X. When the function is called again, it continues from
+// the state where it yielded back previously.
 void nextYRange_HighDown(int x, LineGenState *line, ValueRange *yRange) {
     while (line->x == x && line->y <= line->y1 && line->x < line->W) {
         if (0 <= line->x) {
-            if (line->y < yRange->min) yRange->min = line->y;
-            if (line->y > yRange->max) yRange->max = line->y;
+            if (line->y < yRange->min)
+                yRange->min = line->y;
+            if (line->y > yRange->max)
+                yRange->max = line->y;
         }
         if (line->D > 0) {
             line->x += line->xi;
@@ -1311,7 +1322,7 @@ void drawVLine(Bitmap_ img, int x, int y, int h, int c) {
     uint8_t f = img->fillMask(c);
     if (x < 0 || x >= width(img) || y >= H || y + h - 1 < 0)
         return;
-    if (y < 0){
+    if (y < 0) {
         h += y;
         y = 0;
     }
@@ -1334,20 +1345,18 @@ void fillTriangle(Bitmap_ img, int x0, int y0, int x1, int y1, int x2, int y2, i
         pxt::swap(y0, y1);
     }
 
-    LineGenState lines[] = {
-        initYRangeGenerator(x0, y0, x2, y2),
-        initYRangeGenerator(x0, y0, x1, y1),
-        initYRangeGenerator(x1, y1, x2, y2)
-    };
+    LineGenState lines[] = {initYRangeGenerator(x0, y0, x2, y2),
+                            initYRangeGenerator(x0, y0, x1, y1),
+                            initYRangeGenerator(x1, y1, x2, y2)};
 
     int W = width(img), H = height(img);
     lines[0].W = lines[1].W = lines[2].W = W;
     lines[0].H = lines[1].H = lines[2].H = H;
 
-    // We have 3 different sub-functions to generate Ys of edges, each particular edge maps to one of them.
-    // Use function pointers to avoid judging which function to call at every X.
+    // We have 3 different sub-functions to generate Ys of edges, each particular edge maps to one
+    // of them. Use function pointers to avoid judging which function to call at every X.
     typedef void (*FP_NEXT)(int x, LineGenState *line, ValueRange *yRange);
-    FP_NEXT nextFuncList[] = { nextYRange_Low, nextYRange_HighUp, nextYRange_HighDown };
+    FP_NEXT nextFuncList[] = {nextYRange_Low, nextYRange_HighUp, nextYRange_HighDown};
     FP_NEXT fpNext0 = nextFuncList[lines[0].nextFuncIndex];
     FP_NEXT fpNext1 = nextFuncList[lines[1].nextFuncIndex];
     FP_NEXT fpNext2 = nextFuncList[lines[2].nextFuncIndex];
@@ -1389,7 +1398,8 @@ void fillTriangle(Bitmap_ img, int x0, int y0, int x1, int y1, int x2, int y2, i
     }
 }
 
-void fillPolygon4(Bitmap_ img, int x0, int y0, int x1, int y1, int x2, int y2, int x3, int y3, int c) {
+void fillPolygon4(Bitmap_ img, int x0, int y0, int x1, int y1, int x2, int y2, int x3, int y3,
+                  int c) {
     LineGenState lines[] = {
         (x0 < x1) ? initYRangeGenerator(x0, y0, x1, y1) : initYRangeGenerator(x1, y1, x0, y0),
         (x1 < x2) ? initYRangeGenerator(x1, y1, x2, y2) : initYRangeGenerator(x2, y2, x1, y1),
@@ -1404,13 +1414,13 @@ void fillPolygon4(Bitmap_ img, int x0, int y0, int x1, int y1, int x2, int y2, i
     int maxX = min(max(max(x0, x1), max(x2, x3)), W - 1);
 
     typedef void (*FP_NEXT)(int x, LineGenState *line, ValueRange *yRange);
-    FP_NEXT nextFuncList[] = { nextYRange_Low, nextYRange_HighUp, nextYRange_HighDown };
+    FP_NEXT nextFuncList[] = {nextYRange_Low, nextYRange_HighUp, nextYRange_HighDown};
     FP_NEXT fpNext0 = nextFuncList[lines[0].nextFuncIndex];
     FP_NEXT fpNext1 = nextFuncList[lines[1].nextFuncIndex];
     FP_NEXT fpNext2 = nextFuncList[lines[2].nextFuncIndex];
     FP_NEXT fpNext3 = nextFuncList[lines[3].nextFuncIndex];
 
-    ValueRange yRange = { H, -1 };
+    ValueRange yRange = {H, -1};
     img->makeWritable();
     uint8_t f = img->fillMask(c);
 
@@ -1434,38 +1444,26 @@ void fillPolygon4(Bitmap_ img, int x0, int y0, int x1, int y1, int x2, int y2, i
 
 //%
 void _fillTriangle(Bitmap_ img, pxt::RefCollection *args) {
-    fillTriangle(
-        img,
-        pxt::toInt(args->getAt(0)),
-        pxt::toInt(args->getAt(1)),
-        pxt::toInt(args->getAt(2)),
-        pxt::toInt(args->getAt(3)),
-        pxt::toInt(args->getAt(4)),
-        pxt::toInt(args->getAt(5)),
-        pxt::toInt(args->getAt(6))
-    );
+    fillTriangle(img, pxt::toInt(args->getAt(0)), pxt::toInt(args->getAt(1)),
+                 pxt::toInt(args->getAt(2)), pxt::toInt(args->getAt(3)), pxt::toInt(args->getAt(4)),
+                 pxt::toInt(args->getAt(5)), pxt::toInt(args->getAt(6)));
 }
 
-// This polygon fill is similar to fillTriangle(): Scan minY and maxY of all edges at each X, and draw a vertical line between (x,minY)~(x,maxY).
-// The main difference is that it sorts the endpoints of each edge, x0 < x1, to draw from left to right, but doesn't sort the edges as it's too time consuming.
-// Instead, just call next(), which returns immediately if the x is not in range of the edge in horizon.
-// NOTE: Unlike triangles, edges of a polygon can cross a vertical line at a given X multi time. This algorithm can fill correctly only if edges meet this condition: Any vertical line(x) cross edges at most 2 times.
-// Fortunately, no matter what perspective transform is applied, a rectangle/trapezoid will still meet this condition.
-// Ref: https://forum.makecode.com/t/new-3d-engine-help-filling-4-sided-polygons/18641/9
+// This polygon fill is similar to fillTriangle(): Scan minY and maxY of all edges at each X, and
+// draw a vertical line between (x,minY)~(x,maxY). The main difference is that it sorts the
+// endpoints of each edge, x0 < x1, to draw from left to right, but doesn't sort the edges as it's
+// too time consuming. Instead, just call next(), which returns immediately if the x is not in range
+// of the edge in horizon. NOTE: Unlike triangles, edges of a polygon can cross a vertical line at a
+// given X multi time. This algorithm can fill correctly only if edges meet this condition: Any
+// vertical line(x) cross edges at most 2 times. Fortunately, no matter what perspective transform
+// is applied, a rectangle/trapezoid will still meet this condition. Ref:
+// https://forum.makecode.com/t/new-3d-engine-help-filling-4-sided-polygons/18641/9
 //%
 void _fillPolygon4(Bitmap_ img, pxt::RefCollection *args) {
-    fillPolygon4(
-        img,
-        pxt::toInt(args->getAt(0)),
-        pxt::toInt(args->getAt(1)),
-        pxt::toInt(args->getAt(2)),
-        pxt::toInt(args->getAt(3)),
-        pxt::toInt(args->getAt(4)),
-        pxt::toInt(args->getAt(5)),
-        pxt::toInt(args->getAt(6)),
-        pxt::toInt(args->getAt(7)),
-        pxt::toInt(args->getAt(8))
-    );
+    fillPolygon4(img, pxt::toInt(args->getAt(0)), pxt::toInt(args->getAt(1)),
+                 pxt::toInt(args->getAt(2)), pxt::toInt(args->getAt(3)), pxt::toInt(args->getAt(4)),
+                 pxt::toInt(args->getAt(5)), pxt::toInt(args->getAt(6)), pxt::toInt(args->getAt(7)),
+                 pxt::toInt(args->getAt(8)));
 }
 
 } // namespace BitmapMethods
@@ -1478,7 +1476,7 @@ namespace bitmaps {
 Bitmap_ ofBuffer(Buffer buf) {
     return BitmapMethods::convertAndWrap(buf);
 }
-}
+} // namespace bitmaps
 
 namespace bitmaps {
 /**
@@ -1553,7 +1551,8 @@ extern "C" void *memset(void *dst, int v, size_t sz) {
         dst = d;
     }
 
-    // without volatile here, GCC may optimize the loop to memset() call which is obviously not great
+    // without volatile here, GCC may optimize the loop to memset() call which is obviously not
+    // great
     volatile uint8_t *dd = (uint8_t *)dst;
 
     while (sz--) {
