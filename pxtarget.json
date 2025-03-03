@@ -437,6 +437,9 @@
             "identity",
             "blocksErrorList"
         ],
+        "supportedExperiences": [
+            "code-eval"
+        ],
         "bluetoothUartFilters": [
             {
                 "namePrefix": "BBC micro:bit"
