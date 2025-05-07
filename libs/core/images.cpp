@@ -77,7 +77,7 @@ namespace ImageMethods {
 //% help=images/plot-image
 //% parts="ledmatrix"
 void plotImage(Image i, int xOffset = 0) {
-    uBit.display.print(MicroBitImage(i->img), -xOffset, 0, 0, 0);
+    // uBit.display.print(MicroBitImage(i->img), -xOffset, 0, 0, 0);
 }
 
 /**
@@ -90,7 +90,7 @@ void plotImage(Image i, int xOffset = 0) {
 //% interval.defl=400
 //% blockGap=8 parts="ledmatrix" async
 void showImage(Image sprite, int xOffset, int interval = 400) {
-    uBit.display.print(MicroBitImage(sprite->img), -xOffset, 0, 0, interval);
+    // uBit.display.print(MicroBitImage(sprite->img), -xOffset, 0, 0, interval);
 }
 
 /**
@@ -115,7 +115,7 @@ void plotFrame(Image i, int xOffset) {
 //% blockGap=8 parts="ledmatrix"
 void scrollImage(Image id, int frameOffset, int interval) {
     MicroBitImage i(id->img);
-    uBit.display.animate(i, interval, frameOffset, MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS, 0);
+    // uBit.display.animate(i, interval, frameOffset, MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS, 0);
 }
 
 /**

@@ -44,16 +44,16 @@ void checkEnv() {
         int defaultSampleRate = 11000;
         MicroBitAudio::requestActivation();
 
-        splitterChannel = uBit.audio.splitter->createChannel();
+        // splitterChannel = uBit.audio.splitter->createChannel();
         splitterChannel->requestSampleRate( defaultSampleRate );
 
         recording = new StreamRecording(*splitterChannel);
 
-        channel = uBit.audio.mixer.addChannel(*recording, defaultSampleRate);
+        // channel = uBit.audio.mixer.addChannel(*recording, defaultSampleRate);
 
         channel->setVolume(75.0);
-        uBit.audio.mixer.setVolume(1000);
-        uBit.audio.setSpeakerEnabled(true);
+        // uBit.audio.mixer.setVolume(1000);
+        // uBit.audio.setSpeakerEnabled(true);
     }
 #endif
 }
@@ -114,7 +114,7 @@ void erase() {
 //%
 void setMicrophoneGain(float gain) {
 #if MICROBIT_CODAL
-    uBit.audio.processor->setGain(gain);
+    // uBit.audio.processor->setGain(gain);
 #endif
 }
 

@@ -7,10 +7,10 @@ namespace music {
     //% async
     void __playSoundExpression(String nodes, bool waitTillDone) {
 #if MICROBIT_CODAL
-        if (waitTillDone)
-            uBit.audio.soundExpressions.play(MSTR(nodes));
-        else
-            uBit.audio.soundExpressions.playAsync(MSTR(nodes));
+        // if (waitTillDone)
+        //     uBit.audio.soundExpressions.play(MSTR(nodes));
+        // else
+        //     uBit.audio.soundExpressions.playAsync(MSTR(nodes));
 #else
         target_panic(PANIC_VARIANT_NOT_SUPPORTED);
 #endif
@@ -22,7 +22,7 @@ namespace music {
     //% 
     void __stopSoundExpressions() {
 #if MICROBIT_CODAL
-        uBit.audio.soundExpressions.stop();
+        // uBit.audio.soundExpressions.stop();
 #endif
     }
 }

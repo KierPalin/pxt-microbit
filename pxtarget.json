@@ -179,15 +179,10 @@
         "dockerImage": "pext/yotta:gcc5"
     },
     "multiVariants": [
-        "mbdal",
         "mbcodal"
     ],
     "alwaysMultiVariant" : true,
     "variants": {
-        "mbdal": {
-            "compile": {},
-            "compileService": {}
-        },
         "mbcodal": {
             "compile": {
                 "flashCodeAlign": 4096,
@@ -198,8 +193,8 @@
                 "buildEngine": "codal",
                 "codalTarget": {
                     "name": "codal-microbit-v2",
-                    "url": "https://github.com/lancaster-university/codal-microbit-v2",
-                    "branch": "v0.2.69",
+                    "url": "https://github.com/kierpalin/codal-microbit-v2",
+                    "branch": "wds-radio-firmware-merged",
                     "type": "git"
                 },
                 "codalBinary": "MICROBIT",

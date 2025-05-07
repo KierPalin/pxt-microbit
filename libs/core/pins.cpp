@@ -420,7 +420,7 @@ namespace pins {
         // init pins if needed
         if (NULL == pitchPin) {
 #if MICROBIT_CODAL
-            pitchPin = &uBit.audio.virtualOutputPin;
+            // pitchPin = &uBit.audio.virtualOutputPin;
 #else
             pitchPin = getPin((int)AnalogPin::P0);
 #endif
@@ -670,8 +670,8 @@ namespace pins {
     //% blockGap=8
     void setAudioPin(int name) {
 #if MICROBIT_CODAL
-        uBit.audio.setPin(*getPin((int)name));
-        uBit.audio.setPinEnabled(!edgeConnectorSoundDisabled);
+        // uBit.audio.setPin(*getPin((int)name));
+        // uBit.audio.setPinEnabled(!edgeConnectorSoundDisabled);
 #else
         // v1 behavior
         pins::analogSetPitchPin(name);
@@ -688,7 +688,7 @@ namespace pins {
     void setAudioPinEnabled(bool enabled) {
         edgeConnectorSoundDisabled = !enabled;
 #if MICROBIT_CODAL
-        uBit.audio.setPinEnabled(enabled);
+        // uBit.audio.setPinEnabled(enabled);
 #endif
     }
 }

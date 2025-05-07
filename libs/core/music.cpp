@@ -19,7 +19,7 @@ namespace music {
 //% blockGap=8
 void setVolume(int volume) {
 #if MICROBIT_CODAL
-    uBit.audio.setVolume(max(0, min(255, volume)));
+    // uBit.audio.setVolume(max(0, min(255, volume)));
 #else
     pins::analogSetPitchVolume(volume);
 #endif
@@ -35,7 +35,7 @@ void setVolume(int volume) {
 //% blockGap=8
 int volume() {
 #if MICROBIT_CODAL
-    return uBit.audio.getVolume();
+    // return uBit.audio.getVolume();
 #else
     return pins::analogPitchVolume();
 #endif
@@ -54,7 +54,7 @@ int volume() {
 //% weight=0
 void setBuiltInSpeakerEnabled(bool enabled) {
 #if MICROBIT_CODAL
-    uBit.audio.setSpeakerEnabled(enabled);
+    // uBit.audio.setSpeakerEnabled(enabled);
 #else
     // don't crash if user asks to turn it off
     if (enabled) {
@@ -72,11 +72,11 @@ void setBuiltInSpeakerEnabled(bool enabled) {
 //% weight=0
 bool isSoundPlaying() {
 #if MICROBIT_CODAL
-    if (uBit.audio.mixer.getSilenceStartTime() == 0) {
+    // if (uBit.audio.mixer.getSilenceStartTime() == 0) {
         return false;
-    } else {
-        return uBit.audio.isPlaying();
-    }
+    // } else {
+    //     return uBit.audio.isPlaying();
+    // }
 
 #else
     target_panic(PANIC_VARIANT_NOT_SUPPORTED);
@@ -94,7 +94,7 @@ bool isSoundPlaying() {
 //% weight=1
 void setSilenceLevel(int level) {
 #if MICROBIT_CODAL
-    uBit.audio.mixer.setSilenceLevel(level);
+    // uBit.audio.mixer.setSilenceLevel(level);
 #else
     // this is an optimization
     // ignore in V1

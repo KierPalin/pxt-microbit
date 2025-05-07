@@ -300,7 +300,8 @@ namespace input {
     //% blockId=device_get_light_level block="light level" blockGap=8
     //% parts="ledmatrix"
     int lightLevel() {
-        return uBit.display.readLightLevel();
+        // return uBit.display.readLightLevel();
+        return 0;
     }
 
     /**
