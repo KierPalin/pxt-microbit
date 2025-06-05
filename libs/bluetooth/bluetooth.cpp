@@ -57,7 +57,7 @@ namespace bluetooth {
     //% blockId=bluetooth_start_led_service block="bluetooth led service" blockGap=8
     //% parts="bluetooth" weight=87
     void startLEDService() {
-        new MicroBitLEDService(*uBit.ble, uBit.display);
+        // new MicroBitLEDService(*uBit.ble, uBit.display);
     }
 
     /**

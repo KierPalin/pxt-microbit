@@ -24,7 +24,7 @@ namespace led {
     //% x.min=0 x.max=4 y.min=0 y.max=4
     //% x.fieldOptions.precision=1 y.fieldOptions.precision=1
     void plot(int x, int y) {
-      uBit.display.image.setPixelValue(x, y, 0xff);
+    //   uBit.display.image.setPixelValue(x, y, 0xff);
     }
 
     /**
@@ -42,9 +42,9 @@ namespace led {
     void plotBrightness(int x, int y, int brightness) {
         brightness = max(0, min(0xff, brightness));
         // enable greyscale as needed
-        if (brightness != 0 && brightness != 0xff && uBit.display.getDisplayMode() != DISPLAY_MODE_GREYSCALE)
-            uBit.display.setDisplayMode(DISPLAY_MODE_GREYSCALE);
-        uBit.display.image.setPixelValue(x, y, brightness);
+        // if (brightness != 0 && brightness != 0xff && uBit.display.getDisplayMode() != DISPLAY_MODE_GREYSCALE)
+        //     uBit.display.setDisplayMode(DISPLAY_MODE_GREYSCALE);
+        // uBit.display.image.setPixelValue(x, y, brightness);
     }
 
     /**
@@ -58,7 +58,7 @@ namespace led {
     //% x.min=0 x.max=4 y.min=0 y.max=4
     //% x.fieldOptions.precision=1 y.fieldOptions.precision=1
     void unplot(int x, int y) {
-      uBit.display.image.setPixelValue(x, y, 0);
+    //   uBit.display.image.setPixelValue(x, y, 0);
     }
 
     /**
@@ -73,7 +73,8 @@ namespace led {
     //% x.fieldOptions.precision=1 y.fieldOptions.precision=1
     //% advanced=true
     int pointBrightness(int x, int y) {
-      return uBit.display.image.getPixelValue(x, y);
+    //   return uBit.display.image.getPixelValue(x, y);
+        return 0;
     }
 
     /**
@@ -84,7 +85,8 @@ namespace led {
     //% parts="ledmatrix"
     //% advanced=true
     int brightness() {
-      return uBit.display.getBrightness();
+    //   return uBit.display.getBrightness();
+        return 0;
     }
 
     /**
@@ -97,7 +99,7 @@ namespace led {
     //% advanced=true
     //% value.min=0 value.max=255
     void setBrightness(int value) {
-       uBit.display.setBrightness(value);
+    //    uBit.display.setBrightness(value);
     }
 
     /**
@@ -108,7 +110,7 @@ namespace led {
     //% parts="ledmatrix"
     //% advanced=true
     void stopAnimation() {
-       uBit.display.stopAnimation();
+    //    uBit.display.stopAnimation();
     }
 
     /**
@@ -119,7 +121,7 @@ namespace led {
     //% parts="ledmatrix" advanced=true weight=1
     //% blockId="led_set_display_mode" block="set display mode $mode"
     void setDisplayMode(DisplayMode_ mode) {
-        uBit.display.setDisplayMode((DisplayMode)mode);
+        // uBit.display.setDisplayMode((DisplayMode)mode);
     }
 
     /**
@@ -127,7 +129,7 @@ namespace led {
     */
     //% weight=1 parts="ledmatrix" advanced=true
     DisplayMode_ displayMode() {
-        return (DisplayMode_)uBit.display.getDisplayMode();
+        // return (DisplayMode_)uBit.display.getDisplayMode();
     }
 
     /**
@@ -136,8 +138,8 @@ namespace led {
     //% help=led/enable blockId=device_led_enable block="led enable %on"
     //% advanced=true parts="ledmatrix"
     void enable(bool on) {
-        if (on) uBit.display.enable();
-        else uBit.display.disable();
+        // if (on) uBit.display.enable();
+        // else uBit.display.disable();
     }
 
     /**
@@ -146,10 +148,10 @@ namespace led {
     //% help=led/screenshot
     //% parts="ledmatrix"
     Image screenshot() {
-        auto d = uBit.display.screenShot().leakData();
-        auto r = NEW_GC(RefMImage, d);
-        d->decr();
-        return r;
+        // auto d = uBit.display.screenShot().leakData();
+        // auto r = NEW_GC(RefMImage, d);
+        // d->decr();
+        // return r;
         /*
         let Image img;
         img = image.createImage("");
@@ -162,5 +164,7 @@ namespace led {
         }
         return img;
         */
+
+        return NULL;
     }
 }

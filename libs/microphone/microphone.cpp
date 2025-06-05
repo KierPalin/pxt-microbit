@@ -45,6 +45,7 @@ void init() {
 void onSound(DetectedSound sound, Action handler) {
 #if MICROBIT_CODAL
     init();
+    // uBit.audio.levelSPL->activateForEvents(true);
     const auto thresholdType = sound == DetectedSound::Loud ? LEVEL_THRESHOLD_HIGH : LEVEL_THRESHOLD_LOW;
     registerWithDal(DEVICE_ID_SYSTEM_LEVEL_DETECTOR, thresholdType, handler);
 #else
@@ -64,6 +65,12 @@ int soundLevel() {
 #if MICROBIT_CODAL
     init();
     return uBit.audio.levelSPL->getValue();
+    // LevelDetectorSPL* level = uBit.audio.levelSPL;
+    // if (NULL == level)
+//         return 0;
+    // const int micValue = level->getValue();
+    // const int scaled = max(MICROPHONE_MIN, min(micValue, MICROPHONE_MAX)) - MICROPHONE_MIN;
+    // return min(0xff, scaled * 0xff / (MICROPHONE_MAX - MICROPHONE_MIN));
 #else
     target_panic(PANIC_VARIANT_NOT_SUPPORTED);
     return 0;
@@ -90,6 +97,16 @@ void setSoundThreshold(SoundThreshold sound, int threshold) {
         level->setHighThreshold(threshold);
     else
         level->setLowThreshold(threshold);
+    // LevelDetectorSPL* level = uBit.audio.levelSPL;
+    // if (NULL == level)
+//         return;
+
+    // threshold = max(0, min(0xff, threshold));
+    // const int scaled = MICROPHONE_MIN + threshold * (MICROPHONE_MAX - MICROPHONE_MIN) / 0xff;
+    // if (SoundThreshold::Loud == sound)
+    //     level->setHighThreshold(scaled);
+    // else
+    //     level->setLowThreshold(scaled);
 #else
     target_panic(PANIC_VARIANT_NOT_SUPPORTED);
 #endif

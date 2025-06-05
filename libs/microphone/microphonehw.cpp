@@ -43,13 +43,14 @@ class WMicrophone {
   public:
     MIC_DEVICE microphone;
     LevelDetectorSPL level;
-    WMicrophone() MIC_INIT { MIC_ENABLE; }
+    // WMicrophone() MIC_INIT { MIC_ENABLE; }
 };
-SINGLETON(WMicrophone);
+// SINGLETON(WMicrophone);
 
 codal::LevelDetectorSPL *getMicrophoneLevel() {
-    auto wmic = getWMicrophone();
-    return wmic ? &(wmic->level) : NULL;
+    // auto wmic = getWMicrophone();
+    // return wmic ? &(wmic->level) : NULL;
+    return NULL;
 }
 
 } // namespace pxt
